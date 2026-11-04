@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101923">
+<meta name="description" content="Discover and play games from UNKNOWN ARCADE.">
+<title>UNKNOWN ARCADE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#101923;--bg2:#172330;--panel:#1b2a38;--panel2:#223343;--line:#304252;--text:#eaf1f7;--muted:#9eafbd;--blue:#66c0f4;--green:#a4d007;--shadow:0 18px 45px #0005}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#172431 0,#101923 470px);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}
+.topbar{height:68px;background:#171f2b;box-shadow:0 2px 12px #0004;position:sticky;top:0;z-index:20}.top-inner{max-width:1320px;height:100%;padding:0 26px;margin:auto;display:flex;align-items:center;gap:35px}.logo{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:1px;white-space:nowrap}.logo b{color:var(--blue)}.nav{display:flex;gap:25px;height:100%;align-items:center}.nav a{font-size:13px;color:#c6d2dc;font-weight:700;height:100%;display:flex;align-items:center;border-bottom:2px solid transparent}.nav a:hover,.nav a.active{color:#fff;border-color:var(--blue)}.top-spacer{flex:1}.search{width:min(270px,28vw);position:relative}.search input{width:100%;border:1px solid #293b4b;background:#0e1720;color:white;border-radius:4px;padding:10px 36px 10px 13px;outline:none;font-size:12px}.search input:focus{border-color:var(--blue)}.search span{position:absolute;right:12px;top:9px;color:#8fa5b7}
+.wrap{max-width:1320px;margin:auto;padding:0 26px}.welcome{padding:38px 0 23px}.eyebrow{color:var(--blue);font-size:10px;font-weight:800;letter-spacing:2.3px;text-transform:uppercase}.welcome h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(29px,4vw,43px);letter-spacing:-1.6px;margin:8px 0 5px}.welcome p{color:var(--muted);font-size:13px;margin:0}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;margin:0}.section-sub{color:var(--muted);font-size:11px;margin-top:4px}.section-head{display:flex;justify-content:space-between;align-items:end;margin:30px 0 14px}.see-all{color:var(--blue);font-size:11px;font-weight:700}
+.featured{height:340px;border-radius:7px;overflow:hidden;position:relative;background:linear-gradient(110deg,#172839,#31516a);box-shadow:var(--shadow);display:flex;align-items:end;margin-top:8px}.featured-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.8}.featured-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,15,22,.96) 0%,rgba(7,15,22,.78) 42%,rgba(7,15,22,.12) 100%),linear-gradient(0deg,#09121bd9,transparent 60%)}.featured-content{position:relative;z-index:1;padding:34px;max-width:570px}.featured-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--blue);text-transform:uppercase}.featured h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4vw,47px);line-height:1.03;margin:10px 0}.featured p{font-size:12px;line-height:1.7;color:#c0ccd6;max-width:430px;margin:0 0 18px}.feature-actions{display:flex;gap:9px;align-items:center}.btn{border:0;border-radius:3px;padding:11px 17px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px}.btn-primary{background:var(--blue);color:#10202b}.btn-primary:hover{background:#91d5ff}.btn-secondary{background:#ffffff1b;color:#fff;border:1px solid #ffffff30}.btn-secondary:hover{background:#ffffff2b}
+.quick-stats{display:flex;gap:20px;margin-top:16px;color:#8fa2b1;font-size:10px}.quick-stats strong{color:#e5edf4}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 17px}.filter{border:1px solid #334858;background:#1a2936;color:#b8c7d2;border-radius:3px;padding:7px 12px;font-size:10px;font-weight:700;cursor:pointer}.filter:hover,.filter.active{background:#31516a;color:#fff;border-color:#4b7997}
+.game-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.game-card{background:#1a2835;border:1px solid #293b49;border-radius:4px;overflow:hidden;min-width:0;transition:transform .18s,border-color .18s,box-shadow .18s;cursor:pointer}.game-card:hover{transform:translateY(-3px);border-color:#55758c;box-shadow:0 12px 25px #0004}.thumb{height:145px;position:relative;background:linear-gradient(135deg,#243e53,#17232e);overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.game-card:hover .thumb img{transform:scale(1.04)}.thumb-fallback{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:22px;font-weight:700;text-align:center;padding:18px;background:radial-gradient(circle at 75% 25%,#557b96,#20384b 52%,#14212c)}.tag{position:absolute;top:9px;right:9px;border-radius:2px;padding:6px 8px;font-size:9px;letter-spacing:.7px;font-weight:900;box-shadow:0 3px 10px #0005}.tag.new{background:#a4d007;color:#18220b}.tag.updated{background:#66c0f4;color:#10202b}.fav{position:absolute;top:9px;left:9px;width:28px;height:28px;border:0;border-radius:3px;background:#0c1723b8;color:white;font-size:17px;cursor:pointer}.fav.on{color:#ffcf5b}.card-info{padding:12px 13px 13px}.card-title-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.card-title{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rating{color:#e8c75a;font-size:10px;white-space:nowrap}.card-desc{color:#91a3b2;font-size:10px;line-height:1.5;height:30px;overflow:hidden;margin:7px 0 11px}.card-foot{display:flex;justify-content:space-between;align-items:center;color:#8195a5;font-size:9px}.category{color:#a9bdcc}.mini-play{color:var(--blue);font-weight:800;font-size:9px}
+.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);border:1px dashed #3a4b58;font-size:12px;border-radius:4px}.split{display:grid;grid-template-columns:1.5fr 1fr;gap:22px}.side-list{display:grid;gap:9px}.side-item{display:flex;gap:12px;align-items:center;background:#1a2835;border:1px solid #293b49;border-radius:4px;padding:9px}.side-img{width:76px;height:48px;object-fit:cover;border-radius:2px;background:#2a4052}.side-item h3{font-size:11px;margin:0 0 4px}.side-item p{font-size:9px;color:var(--muted);margin:0}.side-item .side-tag{margin-left:auto;font-size:8px;color:var(--blue);font-weight:800;white-space:nowrap}
+.news-list{display:grid;gap:9px}.news-item{background:#1a2835;border-left:2px solid #66c0f4;padding:12px 14px}.news-item h3{font-size:11px;margin:0 0 5px}.news-item p{font-size:10px;color:var(--muted);line-height:1.5;margin:0}.news-date{font-size:8px;color:#71889a;margin-bottom:5px}
+.modal{position:fixed;inset:0;background:#050b11eF;z-index:50;display:none;align-items:center;justify-content:center;padding:22px}.modal.open{display:flex}.modal-box{width:min(1050px,100%);max-height:94vh;overflow:auto;background:#172431;border:1px solid #3a5061;border-radius:6px;box-shadow:0 25px 80px #000b}.modal-top{display:flex;justify-content:space-between;align-items:center;padding:13px 17px;border-bottom:1px solid #304252}.modal-top strong{font-family:'Space Grotesk';font-size:14px}.close{border:0;background:transparent;color:#dce7ef;font-size:23px;cursor:pointer}.game-frame{width:100%;height:min(64vh,650px);border:0;background:#080d12;display:block}.modal-details{padding:18px;display:flex;justify-content:space-between;gap:20px;align-items:start}.modal-details h2{font-family:'Space Grotesk';font-size:22px;margin:0 0 7px}.modal-details p{font-size:11px;color:var(--muted);line-height:1.6;margin:0;max-width:650px}.modal-actions{display:flex;gap:8px;flex-wrap:wrap}.modal-note{font-size:9px;color:#8093a2;padding:0 18px 16px}
+.footer{border-top:1px solid #293b49;margin-top:50px;padding:23px 0 35px;color:#718494;font-size:10px;display:flex;justify-content:space-between}
+@media(max-width:1000px){.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.featured{height:310px}}
+@media(max-width:720px){.top-inner{padding:0 15px;gap:15px}.nav{gap:13px}.nav a{font-size:10px}.search{width:145px}.wrap{padding:0 15px}.welcome{padding-top:29px}.featured{height:320px}.featured-content{padding:22px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.thumb{height:125px}.split{grid-template-columns:1fr}.section-head{margin-top:26px}}
+@media(max-width:480px){.topbar{height:auto;min-height:62px}.top-inner{flex-wrap:wrap;padding:12px 14px;gap:9px}.logo{font-size:18px}.nav{order:3;width:100%;height:28px;gap:22px}.nav a{height:28px}.search{margin-left:auto;width:45%}.welcome h1{font-size:31px}.featured{height:360px}.featured-shade{background:linear-gradient(0deg,#09121bf2 0%,#09121b99 65%,#09121b22 100%)}.featured-content{padding:19px}.game-grid{gap:10px}.thumb{height:112px}.card-info{padding:10px}.card-title{font-size:11px}.card-desc{font-size:9px}.modal{padding:8px}.game-frame{height:58vh}.modal-details{display:block}.modal-actions{margin-top:12px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <a class="logo" href="#"><b>UNKNOWN</b> ARCADE</a>
+    <nav class="nav"><a class="active" href="#home">STORE</a><a href="#library">LIBRARY</a><a href="#news">NEWS</a></nav>
+    <div class="top-spacer"></div>
+    <label class="search"><input id="search" type="search" placeholder="Search games..." autocomplete="off"><span>⌕</span></label>
+  </div>
+</header>
+<main class="wrap" id="home">
+  <section class="welcome">
+    <div class="eyebrow">YOUR NEXT ADVENTURE STARTS HERE</div>
+    <h1>Welcome to UNKNOWN ARCADE</h1>
+    <p>Discover something new. Play instantly. All your games, in one place.</p>
+  </section>
+
+  <section id="featured-section">
+    <div class="section-head"><div><h2 class="section-title">Featured game</h2><div class="section-sub">Picked from the arcade</div></div><a class="see-all" href="#library">VIEW LIBRARY →</a></div>
+    <div class="featured" id="featured">
+      <div class="featured-shade"></div><div class="featured-content"><div class="featured-label">FEATURED THIS WEEK</div><h2>Loading the arcade…</h2><p>Finding your next game.</p></div>
+    </div>
+    <div class="quick-stats"><span><strong id="totalGames">0</strong> GAMES</span><span><strong id="totalCategories">0</strong> CATEGORIES</span><span>INSTANT BROWSER PLAY</span></div>
+  </section>
+
+  <section id="library">
+    <div class="section-head"><div><h2 class="section-title">Explore the library</h2><div class="section-sub">Find a game and jump straight in</div></div></div>
+    <div class="filters" id="filters"><button class="filter active" data-category="All">ALL GAMES</button></div>
+    <div class="game-grid" id="gameGrid"><div class="empty">Loading games…</div></div>
+  </section>
+
+  <section class="split">
+    <div>
+      <div class="section-head"><div><h2 class="section-title">Recently updated</h2><div class="section-sub">Games with the latest changes</div></div></div>
+      <div class="side-list" id="updatedList"><div class="empty">Loading…</div></div>
+      <div class="section-head"><div><h2 class="section-title">Recently added</h2><div class="section-sub">Fresh arrivals to the arcade</div></div></div>
+      <div class="side-list" id="addedList"><div class="empty">Loading…</div></div>
+      <div class="section-head"><div><h2 class="section-title">Recently played</h2><div class="section-sub">Pick up where you left off</div></div></div>
+      <div class="side-list" id="recentList"><div class="empty">Your played games will show up here.</div></div>
+      <div class="section-head"><div><h2 class="section-title">Your favourites</h2><div class="section-sub">Games you've saved</div></div></div>
+      <div class="side-list" id="favouriteList"><div class="empty">Save a game with the ☆ button to see it here.</div></div>
+    </div>
+    <aside id="news">
+      <div class="section-head"><div><h2 class="section-title">Arcade news</h2><div class="section-sub">Updates and announcements</div></div></div>
+      <div class="news-list" id="newsList"><div class="empty">No announcements yet.</div></div>
+    </aside>
+  </section>
+  <footer class="footer"><span>© <span id="year"></span> UNKNOWN ARCADE</span><span>MADE BY UNKNOWNNAME04</span></footer>
+</main>
+
+<div class="modal" id="gameModal" role="dialog" aria-modal="true" aria-label="Game details">
+  <div class="modal-box">
+    <div class="modal-top"><strong id="modalTopTitle">GAME DETAILS</strong><button class="close" id="closeModal" aria-label="Close">×</button></div>
+    <iframe class="game-frame" id="gameFrame" title="Browser game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe>
+    <div class="modal-details"><div><h2 id="modalTitle"></h2><p id="modalDescription"></p></div><div class="modal-actions"><button class="btn btn-secondary" id="rateButton">☆ RATE</button><button class="btn btn-primary" id="fullscreenButton">⛶ FULLSCREEN</button></div></div>
+    <div class="modal-note">If the game does not load inside this window, use the game's own page or open it in a new tab.</div>
+  </div>
+</div>
+
+<script>
+const CONFIG_URL = "./games.json";
+const NEW_DAYS = 14;
+const UPDATED_DAYS = 7;
+const DAY = 86400000;
+let games = [], news = [], activeCategory = "All", activeGame = null;
+const $ = id => document.getElementById(id);
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const readStore = (key, fallback=[]) => { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; } };
+const writeStore = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} };
+const favourites = () => readStore("unknownArcadeFavourites");
+const recent = () => readStore("unknownArcadeRecent");
+function dateMs(value){const n=Date.parse(value||"");return Number.isFinite(n)?n:0}
+function badge(game){
+  const added = dateMs(game.addedAt), updated = dateMs(game.updatedAt);
+  if (added && Date.now()-added < NEW_DAYS*DAY) return '<span class="tag new">NEW!</span>';
+  if (updated && Date.now()-updated < UPDATED_DAYS*DAY) return '<span class="tag updated">UPDATED</span>';
+  return "";
+}
+function rating(game){const value=readStore("unknownArcadeRatings",{})[game.id];return value?`★ ${value}/5`:"☆ Rate"}
+function imageMarkup(game, cls=""){
+  return game.screenshot ? `<img class="${cls}" src="${safe(game.screenshot)}" alt="${safe(game.title)} screenshot" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : "";
+}
+function fallbackMarkup(game){return `<div class="thumb-fallback" ${game.screenshot?'style="display:none"':""}>${safe(game.title)}</div>`}
+function openGame(id){
+  const game=games.find(g=>g.id===id); if(!game)return;
+  activeGame=game;
+  const ids=recent().filter(x=>x!==id); ids.unshift(id); writeStore("unknownArcadeRecent",ids.slice(0,8));
+  $("modalTopTitle").textContent=game.title.toUpperCase(); $("modalTitle").textContent=game.title;
+  $("modalDescription").textContent=game.description||"Play this game directly in your browser.";
+  $("gameFrame").src=game.url; $("gameModal").classList.add("open");
+  renderSideLists();
+}
+function closeGame(){ $("gameModal").classList.remove("open"); $("gameFrame").src="about:blank"; activeGame=null; }
+function renderFeature(){
+  const game=games.find(g=>g.id===config.featuredGame)||games[0];
+  if(!game){$("featured").innerHTML='<div class="featured-content"><h2>Games coming soon</h2><p>Check back for new games.</p></div>';return;}
+  const bg=game.screenshot?`style="background-image:url('${safe(game.screenshot).replace(/'/g,"%27")}')"`:"";
+  $("featured").innerHTML=`<div class="featured-bg" ${bg}></div><div class="featured-shade"></div><div class="featured-content"><div class="featured-label">✦ FEATURED THIS WEEK</div><h2>${safe(game.title)}</h2><p>${safe(game.description||"Discover and play this game right in your browser.")}</p><div class="feature-actions"><button class="btn btn-primary" data-play="${safe(game.id)}">▶ PLAY NOW</button><button class="btn btn-secondary" data-details="${safe(game.id)}">GAME DETAILS</button></div></div>`;
+}
+function renderFilters(){
+  const cats=["All",...new Set(games.flatMap(g=>g.categories||[]))];
+  $("filters").innerHTML=cats.map(c=>`<button class="filter ${activeCategory===c?'active':''}" data-category="${safe(c)}">${safe(c.toUpperCase())}</button>`).join("");
+  $("totalCategories").textContent=cats.length-1;
+}
+function card(game){
+  const fav=favourites().includes(game.id);
+  return `<article class="game-card" data-open="${safe(game.id)}"><div class="thumb">${imageMarkup(game)}${fallbackMarkup(game)}${badge(game)}<button class="fav ${fav?'on':''}" data-fav="${safe(game.id)}" aria-label="Toggle favourite">${fav?'★':'☆'}</button></div><div class="card-info"><div class="card-title-row"><div class="card-title">${safe(game.title)}</div><div class="rating">${rating(game)}</div></div><p class="card-desc">${safe(game.description||"Play now in your browser.")}</p><div class="card-foot"><span class="category">${safe((game.categories||[]).join(" · "))}</span><span class="mini-play">VIEW GAME →</span></div></div></article>`;
+}
+function renderGrid(){
+  const query=$("search").value.trim().toLowerCase();
+  const filtered=games.filter(g=>(activeCategory==="All"||(g.categories||[]).includes(activeCategory))&&(`${g.title} ${g.description||""} ${(g.categories||[]).join(" ")}`).toLowerCase().includes(query));
+  $("gameGrid").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">No games match your search.</div>';
+}
+function sideItem(game,label){
+  return `<div class="side-item" data-open="${safe(game.id)}">${game.screenshot?`<img class="side-img" src="${safe(game.screenshot)}" alt="" onerror="this.style.visibility='hidden'">`:`<div class="side-img"></div>`}<div><h3>${safe(game.title)}</h3><p>${safe((game.categories||[]).join(" · ")||"Browser game")}</p></div><span class="side-tag">${safe(label)}</span></div>`;
+}
+function renderSideLists(){
+  const updated=[...games].filter(g=>dateMs(g.updatedAt)).sort((a,b)=>dateMs(b.updatedAt)-dateMs(a.updatedAt)).slice(0,4);
+  const added=[...games].filter(g=>dateMs(g.addedAt)).sort((a,b)=>dateMs(b.addedAt)-dateMs(a.addedAt)).slice(0,4);
+  const played=recent().map(id=>games.find(g=>g.id===id)).filter(Boolean).slice(0,4);
+  const favs=favourites().map(id=>games.find(g=>g.id===id)).filter(Boolean).slice(0,4);
+  $("updatedList").innerHTML=updated.length?updated.map(g=>sideItem(g,"UPDATED")).join(""):'<div class="empty">No update dates added yet.</div>';
+  $("addedList").innerHTML=added.length?added.map(g=>sideItem(g,"NEW")).join(""):'<div class="empty">No new games yet.</div>';
+  $("recentList").innerHTML=played.length?played.map(g=>sideItem(g,"PLAY")).join(""):'<div class="empty">Your played games will show up here.</div>';
+  $("favouriteList").innerHTML=favs.length?favs.map(g=>sideItem(g,"SAVED")).join(""):'<div class="empty">Save a game with the ☆ button to see it here.</div>';
+}
+function renderNews(){
+  $("newsList").innerHTML=news.length?news.map(item=>`<article class="news-item"><div class="news-date">${safe(item.date||"ANNOUNCEMENT")}</div><h3>${safe(item.title)}</h3><p>${safe(item.text)}</p></article>`).join(""):'<div class="empty">No announcements yet.</div>';
+}
+let config={};
+async function init(){
+  $("year").textContent=new Date().getFullYear();
+  try{
+    const response=await fetch(CONFIG_URL,{cache:"no-store"});
+    if(!response.ok)throw new Error("Could not load games.json");
+    config=await response.json();
+    games=Array.isArray(config.games)?config.games:[];
+    news=Array.isArray(config.news)?config.news:[];
+    $("totalGames").textContent=games.length;
+    renderFeature();renderFilters();renderGrid();renderSideLists();renderNews();
+  }catch(error){
+    $("gameGrid").innerHTML='<div class="empty">Could not load games.json. Make sure it is uploaded beside index.html.</div>';
+    $("featured").innerHTML='<div class="featured-content"><h2>Arcade config not found</h2><p>Upload games.json beside this page to load your game library.</p></div>';
+    console.error(error);
+  }
+}
+$("search").addEventListener("input",renderGrid);
+$("filters").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(!b)return;activeCategory=b.dataset.category;renderFilters();renderGrid();});
+document.addEventListener("click",e=>{
+  const fav=e.target.closest("[data-fav]");
+  if(fav){e.stopPropagation();const id=fav.dataset.fav;let list=favourites();list=list.includes(id)?list.filter(x=>x!==id):[...list,id];writeStore("unknownArcadeFavourites",list);renderGrid();renderSideLists();return;}
+  const play=e.target.closest("[data-play]");if(play){openGame(play.dataset.play);return;}
+  const details=e.target.closest("[data-details]");if(details){openGame(details.dataset.details);return;}
+  const open=e.target.closest("[data-open]");if(open)openGame(open.dataset.open);
+});
+$("closeModal").addEventListener("click",closeGame);
+$("gameModal").addEventListener("click",e=>{if(e.target===$("gameModal"))closeGame();});
+$("fullscreenButton").addEventListener("click",async()=>{
+  const frame=$("gameFrame");
+  try{if(frame.requestFullscreen)await frame.requestFullscreen();else window.open(activeGame?.url,"_blank","noopener");}
+  catch{window.open(activeGame?.url,"_blank","noopener");}
+});
+$("rateButton").addEventListener("click",()=>{
+  if(!activeGame)return;
+  const current=readStore("unknownArcadeRatings",{});
+  const value=prompt(`Rate ${activeGame.title} from 1 to 5 stars:`,current[activeGame.id]||"5");
+  if(value===null)return;
+  const score=Number(value);if(!Number.isInteger(score)||score<1||score>5){alert("Please enter a number from 1 to 5.");return;}
+  current[activeGame.id]=score;writeStore("unknownArcadeRatings",current);renderGrid();$("rateButton").textContent=`★ ${score}/5 RATED`;
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("gameModal").classList.contains("open"))closeGame();});
+init();
+</script>
+</body>
+</html>

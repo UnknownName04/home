@@ -1,0 +1,26 @@
+{
+  "featuredGame": "ahhhh-craft",
+  "games": [
+    {
+      "id": "ahhhh-craft",
+      "title": "AHHHHHHHHH Craft",
+      "description": "A voxel survival adventure. Explore a block-built world, craft what you need and survive the unknown.",
+      "url": "https://unknownname04.github.io/ahcraft/",
+      "screenshot": "assets/ahcraft.jpg",
+      "categories": [
+        "Survival",
+        "Horror",
+        "Sandbox"
+      ],
+      "addedAt": "2026-11-04",
+      "updatedAt": "2026-11-04"
+    }
+  ],
+  "news": [
+    {
+      "date": "04 NOV 2026",
+      "title": "Welcome to UNKNOWN ARCADE",
+      "text": "The arcade is open. More browser games and updates will be added here."
+    }
+  ]
+}
